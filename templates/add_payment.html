@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add Payment</h1>
+    <form method="POST">
+        <label>Tenant ID:</label>
+        <input type="number" name="tenant_id" required>
+
+        <label>Payment Date:</label>
+        <input type="date" name="payment_date" required>
+
+        <label>Amount:</label>
+        <input type="number" name="amount" step="0.01" required>
+
+        <label>Payment Method:</label>
+        <input type="text" name="method" required>
+
+        <label>Status:</label>
+        <input type="text" name="status" required>
+
+        <button type="submit">Add Payment</button>
+    </form>
+</body>
+</html>

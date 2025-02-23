@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Lease Agreement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add Lease Agreement</h1>
+    <form method="POST">
+        <label for="property_id">Property ID:</label>
+        <input type="number" name="property_id" id="property_id" required>
+
+        <label for="tenant_id">Tenant ID:</label>
+        <input type="number" name="tenant_id" id="tenant_id" required>
+
+        <label for="lease_start">Lease Start Date:</label>
+        <input type="date" name="lease_start" id="lease_start" required>
+
+        <label for="lease_end">Lease End Date:</label>
+        <input type="date" name="lease_end" id="lease_end" required>
+
+        <label for="rent_amount">Monthly Rent Amount:</label>
+        <input type="number" name="rent_amount" id="rent_amount" step="0.01" required>
+
+        <label for="deposit">Security Deposit Amount:</label>
+        <input type="number" name="deposit" id="deposit" step="0.01" required>
+
+        <button type="submit">Add Lease</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

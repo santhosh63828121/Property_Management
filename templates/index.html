@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Property Management System</h1>
+
+    <h2>Properties</h2>
+    <a href="{{ url_for('add_property') }}">Add Property</a>
+    <table>
+        <tr>
+            <th>Property ID</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Type</th>
+            <th>Rooms</th>
+            <th>Rent</th>
+            <th>Status</th>
+        </tr>
+        {% for property in properties %}
+        <tr>
+            <td>{{ property.PropertyID }}</td>
+            <td>{{ property.Address }}</td>
+            <td>{{ property.City }}</td>
+            <td>{{ property.State }}</td>
+            <td>{{ property.ZipCode }}</td>
+            <td>{{ property.PropertyType }}</td>
+            <td>{{ property.NumberOfRooms }}</td>
+            <td>${{ property.RentAmount }}</td>
+            <td>{{ property.Status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Tenants</h2>
+    <a href="{{ url_for('add_tenant') }}">Add Tenant</a>
+    <table>
+        <tr>
+            <th>TenantID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Lease Start</th>
+            <th>Lease End</th>
+            <th>Property ID</th>
+            <th>Action</th>
+        </tr>
+        {% for tenant in tenants %}
+        <tr>
+            <td>{{ tenant. TenantID}}</td>
+            <td>{{ tenant.FirstName }} {{ tenant.LastName }}</td>
+            <td>{{ tenant.PhoneNumber }}</td>
+            <td>{{ tenant.EmailAddress }}</td>
+            <td>{{ tenant.LeaseStartDate }}</td>
+            <td>{{ tenant.LeaseEndDate }}</td>
+            <td>{{ tenant.PropertyID }}</td>
+            <td><a href="{{ url_for('delete_tenant', tenant_id=tenant.TenantID) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Payments</h2>
+    <a href="{{ url_for('add_payment') }}">Add Payment</a>
+    <table>
+        <tr>
+            <th>Tenant ID</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for payment in payments %}
+        <tr>
+            <td>{{ payment.TenantID }}</td>
+            <td>{{ payment.PaymentDate }}</td>
+            <td>${{ payment.Amount }}</td>
+            <td>{{ payment.PaymentMethod }}</td>
+            <td>{{ payment.Status }}</td>
+            <td><a href="{{ url_for('delete_payment', payment_id=payment.PaymentID) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Maintenance Requests</h2>
+    <a href="{{ url_for('add_request') }}">Add Request</a>
+    <table>
+        <tr>
+            <th>Property ID</th>
+            <th>Tenant ID</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.PropertyID }}</td>
+            <td>{{ request.TenantID }}</td>
+            <td>{{ request.RequestDate }}</td>
+            <td>{{ request.Description }}</td>
+            <td>{{ request.Status }}</td>
+            <td><a href="{{ url_for('delete_request', request_id=request.RequestID) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Lease Agreements</h2>
+    <a href="{{ url_for('add_lease') }}">Add Lease</a>
+    <table>
+        <tr>
+            <th>Property ID</th>
+            <th>Tenant ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Rent</th>
+            <th>Deposit</th>
+            <th>Action</th>
+        </tr>
+        {% for lease in leases %}
+        <tr>
+            <td>{{ lease.PropertyID }}</td>
+            <td>{{ lease.TenantID }}</td>
+            <td>{{ lease.LeaseStartDate }}</td>
+            <td>{{ lease.LeaseEndDate }}</td>
+            <td>${{ lease.MonthlyRentAmount }}</td>
+            <td>${{ lease.SecurityDepositAmount }}</td>
+            <td><a href="{{ url_for('delete_lease', lease_id=lease.LeaseID) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

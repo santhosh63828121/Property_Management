@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Tenant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add Tenant</h1>
+    <form method="POST">
+        <label>First Name:</label>
+        <input type="text" name="first_name" required>
+
+        <label>Last Name:</label>
+        <input type="text" name="last_name" required>
+
+        <label>Phone Number:</label>
+        <input type="text" name="phone" required>
+
+        <label>Email Address:</label>
+        <input type="email" name="email" required>
+
+        <label>Lease Start Date:</label>
+        <input type="date" name="lease_start" required>
+
+        <label>Lease End Date:</label>
+        <input type="date" name="lease_end" required>
+
+        <label>Property ID:</label>
+        <input type="number" name="property_id" required>
+
+        <button type="submit">Add Tenant</button>
+    </form>
+</body>
+</html>

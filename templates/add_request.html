@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Maintenance Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add Maintenance Request</h1>
+    <form method="POST">
+        <label>Property ID:</label>
+        <input type="number" name="property_id" required>
+
+        <label>Tenant ID:</label>
+        <input type="number" name="tenant_id" required>
+
+        <label>Request Date:</label>
+        <input type="date" name="request_date" required>
+
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
+
+        <label>Status:</label>
+        <input type="text" name="status" required>
+
+        <button type="submit">Add Request</button>
+    </form>
+</body>
+</html>
